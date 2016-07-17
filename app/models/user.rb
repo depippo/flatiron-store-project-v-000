@@ -9,9 +9,7 @@ class User < ActiveRecord::Base
   has_one :current_cart, class: Cart
 
   def create_current_cart
-    cart = carts.create
-    self.current_cart_id = cart.id
-    save
+    self.current_cart ||= Cart.new
   end
   
 end
